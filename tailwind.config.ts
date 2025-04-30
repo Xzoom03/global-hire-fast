@@ -27,11 +27,25 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: '#004E89',
-					foreground: '#ffffff'
+					foreground: '#ffffff',
+					light: '#3A7CA5',
+					dark: '#003966',
 				},
 				secondary: {
 					DEFAULT: '#00BFFF',
-					foreground: '#ffffff'
+					foreground: '#ffffff',
+					light: '#33CCFF',
+					dark: '#0099CC',
+				},
+				accent: {
+					DEFAULT: '#F2A900',
+					foreground: '#ffffff',
+					light: '#FFB824',
+					dark: '#D49000',
+				},
+				highlight: {
+					DEFAULT: '#E3F6FF',
+					foreground: '#004E89',
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
@@ -94,6 +108,10 @@ export default {
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'gradient-subtle': 'linear-gradient(to right bottom, #f8fafc, #f1f5f9)',
 			}
 		}
 	},
