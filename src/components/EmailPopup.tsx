@@ -7,24 +7,35 @@ import {
 } from "@/components/ui/popover";
 import { Mail } from "lucide-react";
 
-interface EmailPopupProps {
-  email: string;
+interface PopupProps {
+  content: string;
+  url?: string;
+  icon: React.ReactNode;
+  label?: string;
 }
 
-const EmailPopup = ({ email }: EmailPopupProps) => {
+const ContactPopup = ({ content, url, icon, label }: PopupProps) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
         <a className="text-white hover:text-secondary transition-colors flex items-center cursor-pointer">
-          <Mail className="w-6 h-6 mr-2" />
-          <span className="hidden md:inline">Email</span>
+          {icon}
+          <span className="hidden md:inline">{label}</span>
         </a>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-3 bg-white shadow-lg rounded-md border border-gray-200">
-        <div className="text-primary font-medium">{email}</div>
+        <div className="text-primary font-medium">
+          {url ? (
+            <a href={url} target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
+              {content}
+            </a>
+          ) : (
+            content
+          )}
+        </div>
       </PopoverContent>
     </Popover>
   );
 };
 
-export default EmailPopup;
+export default ContactPopup;
