@@ -116,8 +116,8 @@ const RequestForm = () => {
         industry: data.industry === "Other" ? data.otherIndustry : data.industry
       };
       
-      // Send to webhook
-      const response = await fetch("https://fizzwasay.app.n8n.cloud/webhook-test/find4staff-form", {
+      // Send to webhook - Updated URL here
+      const response = await fetch("https://fizzwasay.app.n8n.cloud/webhook/find4staff-form", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
