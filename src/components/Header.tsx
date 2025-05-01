@@ -1,8 +1,12 @@
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
+import Chat from "./Chat";
 
 const Header = () => {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+
   const scrollToForm = () => {
     const formElement = document.getElementById('request-form');
     if (formElement) {
@@ -18,13 +22,14 @@ const Header = () => {
         </div>
         <nav>
           <Button 
-            onClick={scrollToForm} 
+            onClick={() => setIsChatOpen(true)} 
             variant="default" 
             className="bg-secondary hover:bg-secondary/90 flex items-center gap-2"
           >
             <MessageCircle size={18} />
             Live Chat
           </Button>
+          <Chat open={isChatOpen} onOpenChange={setIsChatOpen} />
         </nav>
       </div>
     </header>

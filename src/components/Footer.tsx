@@ -1,6 +1,6 @@
 
-import { Button } from "@/components/ui/button";
-import { Instagram, MessageCircle, Mail, Phone } from "lucide-react";
+import { Instagram, MessageCircle, Phone } from "lucide-react";
+import EmailPopup from "./EmailPopup";
 
 const Footer = () => {
   const scrollToForm = () => {
@@ -37,10 +37,7 @@ const Footer = () => {
                 <Phone className="w-6 h-6 mr-2" />
                 <span className="hidden md:inline">WhatsApp</span>
               </a>
-              <a href="mailto:sales@find4staff.online" className="text-white hover:text-secondary transition-colors flex items-center">
-                <Mail className="w-6 h-6 mr-2" />
-                <span className="hidden md:inline">Email</span>
-              </a>
+              <EmailPopup email="sales@find4staff.online" />
             </div>
           </div>
           
