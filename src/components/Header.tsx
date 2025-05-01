@@ -1,5 +1,6 @@
 
 import { Button } from "@/components/ui/button";
+import { MessageCircle } from "lucide-react";
 
 const Header = () => {
   const scrollToForm = () => {
@@ -19,9 +20,10 @@ const Header = () => {
           <Button 
             onClick={scrollToForm} 
             variant="default" 
-            className="bg-secondary hover:bg-secondary/90"
+            className="bg-secondary hover:bg-secondary/90 flex items-center gap-2"
           >
-            Get Started
+            <MessageCircle size={18} />
+            Live Chat
           </Button>
         </nav>
       </div>

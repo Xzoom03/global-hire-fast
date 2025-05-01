@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
@@ -63,6 +62,11 @@ const formSchema = z.object({
   phone: z.string().optional(),
   country: z.string().min(1, "Country is required"),
   industry: z.string().min(1, "Industry is required"),
+  otherIndustry: z.string().optional().refine(val => {
+    // Only validate if industry is "Other"
+    // This will be checked in the form submission
+    return true;
+  }),
   positions: z.string().min(1, "Number of positions is required"),
   roles: z.string().min(1, "Job roles are required"),
   timeline: z.string().min(1, "Timeline is required"),
@@ -81,6 +85,7 @@ type FormValues = z.infer<typeof formSchema>;
 const RequestForm = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showOtherIndustry, setShowOtherIndustry] = useState(false);
   
   // Initialize form with react-hook-form and zod validation
   const form = useForm<FormValues>({
@@ -92,6 +97,7 @@ const RequestForm = () => {
       phone: "",
       country: "",
       industry: "",
+      otherIndustry: "",
       positions: "",
       roles: "",
       timeline: "",
@@ -103,12 +109,25 @@ const RequestForm = () => {
     setIsSubmitting(true);
     
     try {
-      // This would normally be a fetch request to a backend API
-      // For now, we'll simulate the email sending
-      console.log("Form data to be sent:", data);
+      // Prepare form data for webhook submission
+      const formData = {
+        ...data,
+        // If industry is "Other", use the otherIndustry field instead
+        industry: data.industry === "Other" ? data.otherIndustry : data.industry
+      };
       
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Send to webhook
+      const response = await fetch("https://fizzwasay.app.n8n.cloud/webhook-test/find4staff-form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
       
       // Show success message
       toast({
@@ -118,6 +137,7 @@ const RequestForm = () => {
       
       // Reset form
       form.reset();
+      setShowOtherIndustry(false);
     } catch (error) {
       console.error("Error submitting form:", error);
       toast({
@@ -130,8 +150,14 @@ const RequestForm = () => {
     }
   };
   
+  // Handle industry selection change
+  const handleIndustryChange = (value: string) => {
+    form.setValue("industry", value);
+    setShowOtherIndustry(value === "Other");
+  };
+
   return (
-    <section id="request-form" className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
+    <section id="request-form" className="py-16 md:py-24 bg-gradient-to-b from-white to-highlight/30">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
@@ -240,7 +266,7 @@ const RequestForm = () => {
                       <FormItem>
                         <FormLabel>Industry/Business Type</FormLabel>
                         <Select 
-                          onValueChange={field.onChange} 
+                          onValueChange={(value) => handleIndustryChange(value)} 
                           value={field.value}
                         >
                           <FormControl>
@@ -261,6 +287,22 @@ const RequestForm = () => {
                     )}
                   />
                 </div>
+                
+                {showOtherIndustry && (
+                  <FormField
+                    control={form.control}
+                    name="otherIndustry"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Specify Your Industry</FormLabel>
+                        <FormControl>
+                          <Input {...field} placeholder="Enter your industry" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                )}
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <FormField
@@ -336,7 +378,7 @@ const RequestForm = () => {
                 
                 <Button 
                   type="submit" 
-                  className="w-full bg-secondary hover:bg-secondary/90 text-white font-medium text-lg py-3" 
+                  className="w-full bg-secondary hover:bg-secondary/90 text-white font-medium text-lg py-3 shadow-lg hover:shadow-xl transition-all" 
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Submitting..." : "Request Staff"}
