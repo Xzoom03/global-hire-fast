@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -108,7 +109,7 @@ const RequestForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Prepare form data for email submission
+      // Prepare form data for submission to n8n webhook
       const formData = {
         ...data,
         // If industry is "Other", use the otherIndustry field instead
@@ -116,13 +117,14 @@ const RequestForm = () => {
         submittedAt: new Date().toISOString()
       };
       
-      console.log("Submitting form data:", formData);
+      console.log("Submitting form data to n8n webhook:", formData);
       
-      // Submit to PHP script
-      const response = await fetch("send_email.php", {
+      // Submit to n8n webhook
+      const response = await fetch("https://fizzwasay.app.n8n.cloud/webhook/clientform", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json"
         },
         body: JSON.stringify(formData),
       });
@@ -130,7 +132,8 @@ const RequestForm = () => {
       console.log("Form submission response status:", response.status);
       
       if (!response.ok) {
-        console.error("Form submission error:", response.status, response.statusText);
+        const errorText = await response.text();
+        console.error("Form submission error:", response.status, response.statusText, errorText);
         throw new Error(`Failed to submit form: ${response.status} ${response.statusText}`);
       }
       
