@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -119,18 +118,29 @@ const RequestForm = () => {
       
       console.log("Submitting form data:", formData);
       
-      // Send to webhook
+      // Send to webhook with mode: 'cors' to handle CORS properly
       const response = await fetch("https://fizzwasay.app.n8n.cloud/webhook/onboardingform", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json"
         },
         body: JSON.stringify(formData),
       });
       
+      console.log("Webhook response status:", response.status);
+      
       if (!response.ok) {
         console.error("Webhook response error:", response.status, response.statusText);
         throw new Error(`Failed to submit form: ${response.status} ${response.statusText}`);
+      }
+      
+      // Try to get response body if possible (helpful for debugging)
+      try {
+        const responseData = await response.json();
+        console.log("Webhook response data:", responseData);
+      } catch (e) {
+        console.log("Could not parse response as JSON");
       }
       
       // Show success message
