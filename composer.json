@@ -4,6 +4,13 @@
   "description": "Find4Staff Website",
   "type": "project",
   "require": {
-    "php": ">=7.0"
-  }
+    "php": ">=7.4"
+  },
+  "authors": [
+    {
+      "name": "Find4Staff Team",
+      "email": "baigabdulwasay7@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable"
 }

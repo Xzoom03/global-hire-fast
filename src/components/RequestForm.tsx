@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -119,8 +118,8 @@ const RequestForm = () => {
       
       console.log("Submitting form data to n8n webhook:", formData);
       
-      // Submit to n8n webhook
-      const response = await fetch("https://fizzwasay.app.n8n.cloud/webhook/clientform", {
+      // Submit to n8n webhook with updated URL
+      const response = await fetch("https://fizzwasay.app.n8n.cloud/webhook-test/clientform", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
