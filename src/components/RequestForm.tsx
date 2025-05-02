@@ -108,7 +108,7 @@ const RequestForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Prepare form data for webhook submission
+      // Prepare form data for email submission
       const formData = {
         ...data,
         // If industry is "Other", use the otherIndustry field instead
@@ -118,29 +118,20 @@ const RequestForm = () => {
       
       console.log("Submitting form data:", formData);
       
-      // Send to webhook with mode: 'cors' to handle CORS properly
-      const response = await fetch("https://fizzwasay.app.n8n.cloud/webhook/onboardingform", {
+      // Submit to PHP script
+      const response = await fetch("send_email.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json"
         },
         body: JSON.stringify(formData),
       });
       
-      console.log("Webhook response status:", response.status);
+      console.log("Form submission response status:", response.status);
       
       if (!response.ok) {
-        console.error("Webhook response error:", response.status, response.statusText);
+        console.error("Form submission error:", response.status, response.statusText);
         throw new Error(`Failed to submit form: ${response.status} ${response.statusText}`);
-      }
-      
-      // Try to get response body if possible (helpful for debugging)
-      try {
-        const responseData = await response.json();
-        console.log("Webhook response data:", responseData);
-      } catch (e) {
-        console.log("Could not parse response as JSON");
       }
       
       // Show success message
