@@ -113,11 +113,14 @@ const RequestForm = () => {
       const formData = {
         ...data,
         // If industry is "Other", use the otherIndustry field instead
-        industry: data.industry === "Other" ? data.otherIndustry : data.industry
+        industry: data.industry === "Other" ? data.otherIndustry : data.industry,
+        submittedAt: new Date().toISOString()
       };
       
-      // Send to webhook - Updated URL here
-      const response = await fetch("https://fizzwasay.app.n8n.cloud/webhook/find4staff-form", {
+      console.log("Submitting form data:", formData);
+      
+      // Send to webhook
+      const response = await fetch("https://fizzwasay.app.n8n.cloud/webhook/onboardingform", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -126,7 +129,8 @@ const RequestForm = () => {
       });
       
       if (!response.ok) {
-        throw new Error("Failed to submit form");
+        console.error("Webhook response error:", response.status, response.statusText);
+        throw new Error(`Failed to submit form: ${response.status} ${response.statusText}`);
       }
       
       // Show success message
