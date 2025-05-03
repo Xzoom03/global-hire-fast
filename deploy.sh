@@ -1,8 +1,9 @@
 
 #!/bin/bash
 
-# Build the project
-npm run build
+# Build the project with optimization
+echo "Building optimized production build..."
+VITE_ENV=production npm run build
 
 # Copy .htaccess to the dist folder
 cp .htaccess dist/

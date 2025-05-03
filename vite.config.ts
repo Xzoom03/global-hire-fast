@@ -20,6 +20,24 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  // Adding base path configuration for deployment compatibility
+  // Adding base path configuration for relative paths in production
   base: "./",
+  build: {
+    // Optimize build settings
+    minify: 'terser',
+    cssMinify: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          ui: [
+            '@radix-ui/react-label',
+            '@radix-ui/react-toast',
+            '@radix-ui/react-tooltip'
+          ]
+        }
+      }
+    },
+    sourcemap: false
+  }
 }));
