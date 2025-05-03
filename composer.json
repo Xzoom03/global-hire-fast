@@ -1,6 +1,6 @@
 
 {
-  "name": "find4staff-website",
+  "name": "find4staff/website",
   "description": "Find4Staff Website",
   "type": "project",
   "require": {
