@@ -18,8 +18,14 @@
   # JavaScript
   AddType application/javascript .js
   AddType application/javascript .mjs
+  AddType application/javascript .jsx
+  AddType application/javascript .ts
+  AddType application/javascript .tsx
   AddType text/javascript .js
   AddType text/javascript .mjs
+  AddType text/javascript .jsx
+  AddType text/javascript .ts
+  AddType text/javascript .tsx
 
   # JSON
   AddType application/json .json

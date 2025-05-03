@@ -19,9 +19,10 @@ export default defineConfig(({ mode }) => ({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
   },
   // Adding base path configuration for relative paths in production
-  base: "./",
+  base: "/",
   build: {
     // Optimize build settings
     minify: 'terser',
