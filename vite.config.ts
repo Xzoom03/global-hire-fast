@@ -21,8 +21,8 @@ export default defineConfig(({ mode }) => ({
     },
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
   },
-  // Adding base path configuration for relative paths in production
-  base: "/",
+  // Setting base to '/' for production to ensure correct paths
+  base: '/',
   build: {
     // Optimize build settings
     minify: 'terser',
