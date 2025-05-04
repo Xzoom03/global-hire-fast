@@ -1,5 +1,6 @@
 
-import { Instagram, MessageCircle, Phone, Mail } from "lucide-react";
+import { Instagram, WhatsApp, Mail } from "lucide-react";
+import ContactPopup from "./EmailPopup";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -41,15 +42,13 @@ const Footer = () => {
                 rel="noopener noreferrer" 
                 className="text-accent hover:text-accent-light transition-colors"
               >
-                <Phone className="w-6 h-6" />
+                <WhatsApp className="w-6 h-6" />
               </a>
-              <a 
-                href="mailto:sales@find4staff.online" 
-                className="text-accent hover:text-accent-light transition-colors"
-                aria-label="Email us at sales@find4staff.online"
-              >
-                <Mail className="w-6 h-6" />
-              </a>
+              <ContactPopup 
+                content="sales@find4staff.online" 
+                url="mailto:sales@find4staff.online" 
+                icon={<Mail className="w-6 h-6" />}
+              />
             </div>
           </div>
           

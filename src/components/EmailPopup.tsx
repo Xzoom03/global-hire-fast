@@ -5,7 +5,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Mail } from "lucide-react";
 
 interface PopupProps {
   content: string;
@@ -18,10 +17,10 @@ const ContactPopup = ({ content, url, icon, label }: PopupProps) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <a className="text-white hover:text-secondary transition-colors flex items-center cursor-pointer">
+        <div className="text-accent hover:text-accent-light transition-colors flex items-center cursor-pointer">
           {icon}
           <span className="hidden md:inline">{label}</span>
-        </a>
+        </div>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-3 bg-white shadow-lg rounded-md border border-gray-200">
         <div className="text-primary font-medium">
