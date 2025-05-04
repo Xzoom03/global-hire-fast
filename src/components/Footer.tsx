@@ -1,5 +1,5 @@
 
-import { Instagram, WhatsApp, Mail } from "lucide-react";
+import { Instagram, MessageSquare, Mail } from "lucide-react";
 import ContactPopup from "./EmailPopup";
 
 const Footer = () => {
@@ -42,7 +42,7 @@ const Footer = () => {
                 rel="noopener noreferrer" 
                 className="text-accent hover:text-accent-light transition-colors"
               >
-                <WhatsApp className="w-6 h-6" />
+                <MessageSquare className="w-6 h-6" />
               </a>
               <ContactPopup 
                 content="sales@find4staff.online" 
