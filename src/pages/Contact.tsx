@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RequestForm from "@/components/RequestForm";
 import { Card, CardContent } from "@/components/ui/card";
+import { Mail, Phone, Instagram } from "lucide-react";
 
 const Contact = () => {
   return (
