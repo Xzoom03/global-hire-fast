@@ -11,13 +11,14 @@ interface PopupProps {
   url?: string;
   icon: React.ReactNode;
   label?: string;
+  className?: string;
 }
 
-const ContactPopup = ({ content, url, icon, label }: PopupProps) => {
+const ContactPopup = ({ content, url, icon, label, className }: PopupProps) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <div className="text-white hover:text-highlight-light transition-colors flex items-center gap-2 cursor-pointer">
+        <div className={`text-white hover:text-highlight-light transition-colors flex items-center gap-2 cursor-pointer ${className}`}>
           {icon}
           <span className="hidden md:inline">{label}</span>
         </div>
