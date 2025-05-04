@@ -1,12 +1,14 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { MapPin, MessageCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
-  const scrollToForm = () => {
-    const formElement = document.getElementById('request-form');
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: 'smooth' });
+  const scrollToFooter = () => {
+    const footerElement = document.querySelector('footer');
+    if (footerElement) {
+      footerElement.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -15,6 +17,27 @@ const Header = () => {
       <div className="container mx-auto flex justify-between items-center px-4 md:px-6">
         <div className="flex items-center">
           <h1 className="text-primary text-xl font-bold">Find4Staff</h1>
+        </div>
+        
+        <div className="flex gap-3">
+          <Button 
+            onClick={scrollToFooter} 
+            variant="outline" 
+            className="flex items-center gap-2 hover:bg-secondary-light"
+          >
+            <MapPin className="w-4 h-4" /> 
+            FIND US
+          </Button>
+          
+          <Link to="/contact">
+            <Button 
+              variant="outline" 
+              className="flex items-center gap-2 bg-primary hover:bg-primary-light text-white"
+            >
+              <MessageCircle className="w-4 h-4" /> 
+              CONTACT US
+            </Button>
+          </Link>
         </div>
       </div>
     </header>

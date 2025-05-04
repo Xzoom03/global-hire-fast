@@ -1,15 +1,7 @@
 
 import { Instagram, MessageCircle, Phone, Mail } from "lucide-react";
-import ContactPopup from "./EmailPopup";
 
 const Footer = () => {
-  const scrollToForm = () => {
-    const formElement = document.getElementById('request-form');
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -21,7 +13,7 @@ const Footer = () => {
   const instagramUrl = "https://www.instagram.com/find4staff?igsh=OXVwMThjeHBmOGtu";
 
   return (
-    <footer className="bg-gradient-primary text-white py-12">
+    <footer className="footer-gradient text-white py-12">
       <div className="container mx-auto px-4 md:px-6">
         {/* Center all footer content */}
         <div className="flex flex-col items-center justify-center text-center">
@@ -35,23 +27,28 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-center items-center mb-8">
             <p className="text-lg font-medium mb-3 md:mb-0 md:mr-6">Find Us Here:</p>
             <div className="flex space-x-6">
-              <ContactPopup 
-                icon={<Instagram className="w-6 h-6 mr-2 text-accent hover:text-accent-light" />}
-                content="@find4staff"
-                url={instagramUrl}
-                label="Instagram"
-              />
-              <ContactPopup 
-                icon={<Phone className="w-6 h-6 mr-2 text-accent hover:text-accent-light" />}
-                content="+1 (716) 342-1856"
-                url={whatsappUrl}
-                label="WhatsApp"
-              />
-              <ContactPopup 
-                icon={<Mail className="w-6 h-6 mr-2 text-accent hover:text-accent-light" />}
-                content="sales@find4staff.online"
-                label="Email"
-              />
+              <a 
+                href={instagramUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-accent hover:text-accent-light transition-colors"
+              >
+                <Instagram className="w-6 h-6" />
+              </a>
+              <a 
+                href={whatsappUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-accent hover:text-accent-light transition-colors"
+              >
+                <Phone className="w-6 h-6" />
+              </a>
+              <a 
+                href="mailto:sales@find4staff.online" 
+                className="text-accent hover:text-accent-light transition-colors"
+              >
+                <Mail className="w-6 h-6" />
+              </a>
             </div>
           </div>
           
@@ -62,7 +59,7 @@ const Footer = () => {
               <span className="px-3 py-1 bg-gradient-to-r from-primary-light/30 to-primary/40 rounded-full text-sm shadow-sm">INDIA</span>
               <span className="px-3 py-1 bg-gradient-to-r from-primary-light/30 to-primary/40 rounded-full text-sm shadow-sm">SRI LANKA</span>
               <span className="px-3 py-1 bg-gradient-to-r from-primary-light/30 to-primary/40 rounded-full text-sm shadow-sm">USA</span>
-              <span className="px-3 py-1 bg-gradient-to-r from-primary-light/30 to-primary/40 rounded-full text-sm shadow-sm">GREECE</span>
+              <span className="px-3 py-1 bg-gradient-to-r from-primary-light/30 to-primary/40 rounded-full text-sm shadow-sm">SERBIA</span>
               <span className="px-3 py-1 bg-gradient-to-r from-primary-light/30 to-primary/40 rounded-full text-sm shadow-sm">EUROPE</span>
               <span className="px-3 py-1 bg-gradient-to-r from-primary-light/30 to-primary/40 rounded-full text-sm shadow-sm">TURKEY</span>
             </div>

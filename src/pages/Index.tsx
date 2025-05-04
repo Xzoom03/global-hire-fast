@@ -3,18 +3,18 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import About from "@/components/About";
-import RequestForm from "@/components/RequestForm";
+import RecruitmentShowcase from "@/components/RecruitmentShowcase";
 import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-white font-sans">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-highlight/30 to-white font-sans">
       <Header />
       <main>
         <Hero />
         <Services />
         <About />
-        <RequestForm />
+        <RecruitmentShowcase />
       </main>
       <Footer />
     </div>
