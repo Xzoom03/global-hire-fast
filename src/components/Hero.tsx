@@ -33,16 +33,6 @@ const Hero = () => {
             >
               Explore Services
             </Button>
-            
-            <Link to="/contact">
-              <Button 
-                variant="outline"
-                size="lg" 
-                className="mt-4 bg-white hover:bg-gray-50 text-primary border-primary font-medium px-8 py-3 rounded-md text-lg shadow-lg hover:shadow-xl transition-all"
-              >
-                Contact Us
-              </Button>
-            </Link>
           </div>
           
           <div className="flex flex-wrap justify-center gap-4 mt-8 text-sm">

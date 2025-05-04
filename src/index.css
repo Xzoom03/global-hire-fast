@@ -117,3 +117,43 @@
 .footer-gradient {
   @apply bg-gradient-to-br from-primary-dark to-primary;
 }
+
+/* Page transitions */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.animate-fade-out {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+/* Add more colorful elements */
+.bg-colorful-gradient-1 {
+  background: linear-gradient(135deg, #E3F6FF 0%, #C7E6F5 100%);
+}
+
+.bg-colorful-gradient-2 {
+  background: linear-gradient(135deg, #F2A900 10%, #FFB824 90%);
+}
+
+.bg-colorful-gradient-3 {
+  background: linear-gradient(135deg, #004E89 10%, #3A7CA5 90%);
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(45deg, #004E89, #00BFFF);
+}
+

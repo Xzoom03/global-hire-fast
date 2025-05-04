@@ -24,7 +24,7 @@ const Footer = () => {
           </div>
           
           {/* Social media section */}
-          <div className="flex flex-col md:flex-row justify-center items-center mb-8">
+          <div className="flex flex-col md:flex-row justify-center items-center mb-8" id="find-us-section">
             <p className="text-lg font-medium mb-3 md:mb-0 md:mr-6">Find Us Here:</p>
             <div className="flex space-x-6">
               <a 
@@ -46,6 +46,7 @@ const Footer = () => {
               <a 
                 href="mailto:sales@find4staff.online" 
                 className="text-accent hover:text-accent-light transition-colors"
+                aria-label="Email us at sales@find4staff.online"
               >
                 <Mail className="w-6 h-6" />
               </a>

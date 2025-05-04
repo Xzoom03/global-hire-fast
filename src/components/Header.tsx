@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MapPin, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -16,7 +16,9 @@ const Header = () => {
     <header className="bg-white py-4 sticky top-0 z-50 shadow-sm">
       <div className="container mx-auto flex justify-between items-center px-4 md:px-6">
         <div className="flex items-center">
-          <h1 className="text-primary text-xl font-bold">Find4Staff</h1>
+          <Link to="/">
+            <h1 className="text-primary text-xl font-bold">Find4Staff</h1>
+          </Link>
         </div>
         
         <div className="flex gap-3">
@@ -25,11 +27,10 @@ const Header = () => {
             variant="outline" 
             className="flex items-center gap-2 hover:bg-secondary-light"
           >
-            <MapPin className="w-4 h-4" /> 
             FIND US
           </Button>
           
-          <Link to="/contact">
+          <Link to="/contact" className="transition-all duration-300 hover:scale-105">
             <Button 
               variant="outline" 
               className="flex items-center gap-2 bg-primary hover:bg-primary-light text-white"
