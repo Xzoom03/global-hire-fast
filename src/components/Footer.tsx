@@ -1,4 +1,3 @@
-
 import { Instagram, MessageSquare, Mail } from "lucide-react";
 import ContactPopup from "./EmailPopup";
 const Footer = () => {
@@ -26,33 +25,17 @@ const Footer = () => {
           
           {/* Social media section - Updated design with blue background and hover effects */}
           <div className="flex flex-col justify-center items-center mb-6" id="find-us-section">
-            <div className="rounded-md px-6 py-3 flex items-center justify-center gap-6 md:gap-8 bg-[#1EAEDB]">
+            <div className="rounded-md px-6 py-3 flex items-center justify-center gap-6 md:gap-8 bg-sky-900">
               <p className="text-lg font-medium text-white">Find Us Here:</p>
-              <a 
-                href={instagramUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-white flex items-center gap-2 hover:text-white hover:scale-110 transition-all duration-300"
-              >
+              <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="text-white flex items-center gap-2 hover:text-white hover:scale-110 transition-all duration-300">
                 <Instagram className="w-5 h-5" />
                 <span className="hidden md:inline">Instagram</span>
               </a>
-              <a 
-                href={whatsappUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-white flex items-center gap-2 hover:text-white hover:scale-110 transition-all duration-300"
-              >
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-white flex items-center gap-2 hover:text-white hover:scale-110 transition-all duration-300">
                 <MessageSquare className="w-5 h-5" />
                 <span className="hidden md:inline">WhatsApp</span>
               </a>
-              <ContactPopup 
-                content="sales@find4staff.online" 
-                url="mailto:sales@find4staff.online" 
-                icon={<Mail className="w-5 h-5" />} 
-                label="Email"
-                className="hover:scale-110 transition-all duration-300" 
-              />
+              <ContactPopup content="sales@find4staff.online" url="mailto:sales@find4staff.online" icon={<Mail className="w-5 h-5" />} label="Email" className="hover:scale-110 transition-all duration-300" />
             </div>
           </div>
           
