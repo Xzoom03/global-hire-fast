@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RequestForm from "@/components/RequestForm";
-import { Card, CardContent } from "@/components/ui/card";
-import { Mail, Phone, Instagram } from "lucide-react";
 
 const Contact = () => {
   return (
@@ -24,33 +22,13 @@ const Contact = () => {
                 <p className="text-xl text-gray-700 mb-6">
                   We'd love to hear from you! Whether you have questions, feedback, or need assistance, our team is here to help.
                 </p>
-                
-                <Card className="bg-white/80 shadow-md border-0 backdrop-blur-sm mb-8">
-                  <CardContent className="p-6 text-center">
-                    <p className="text-gray-700 mb-4">
-                      At <span className="font-bold text-primary">Find4Staff</span>, we specialize in global staff recruitment, connecting businesses with top-tier talent worldwide.
-                    </p>
-                    <p className="text-gray-700">
-                      Ready to find the right talent? Fill out our onboarding form below, and let's start the journey together.
-                    </p>
-                  </CardContent>
-                </Card>
               </div>
             </div>
           </div>
         </section>
-        <section className="py-10 bg-gradient-to-b from-accent/5 to-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <Card className="border-0 shadow-lg bg-gradient-to-br from-white to-highlight/40 overflow-hidden">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-primary mb-6 text-center">Request Information</h3>
-                  <RequestForm />
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
+        
+        {/* Request form section */}
+        <RequestForm />
       </main>
       <Footer />
     </div>

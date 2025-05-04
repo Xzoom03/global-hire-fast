@@ -17,12 +17,12 @@ const ContactPopup = ({ content, url, icon, label }: PopupProps) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <div className="text-accent hover:text-accent-light transition-colors flex items-center cursor-pointer">
+        <div className="text-white hover:text-highlight-light transition-colors flex items-center gap-2 cursor-pointer">
           {icon}
           <span className="hidden md:inline">{label}</span>
         </div>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-3 bg-white shadow-lg rounded-md border border-gray-200">
+      <PopoverContent className="w-auto p-3 bg-white shadow-lg rounded-md border border-highlight">
         <div className="text-primary font-medium">
           {url ? (
             <a href={url} target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">

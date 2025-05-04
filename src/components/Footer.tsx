@@ -24,30 +24,33 @@ const Footer = () => {
             <p className="mt-2 text-highlight-light">Find the Right Talent Faster</p>
           </div>
           
-          {/* Social media section */}
-          <div className="flex flex-col md:flex-row justify-center items-center mb-8" id="find-us-section">
-            <p className="text-lg font-medium mb-3 md:mb-0 md:mr-6">Find Us Here:</p>
-            <div className="flex space-x-6">
+          {/* Social media section - Updated design with blue background */}
+          <div className="flex flex-col justify-center items-center mb-8" id="find-us-section">
+            <div className="bg-primary rounded-md px-6 py-3 flex items-center justify-center gap-6 md:gap-8">
+              <p className="text-lg font-medium text-white">Find Us Here:</p>
               <a 
                 href={instagramUrl} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-accent hover:text-accent-light transition-colors"
+                className="text-white flex items-center gap-2 hover:text-highlight-light transition-colors"
               >
-                <Instagram className="w-6 h-6" />
+                <Instagram className="w-5 h-5" />
+                <span className="hidden md:inline">Instagram</span>
               </a>
               <a 
                 href={whatsappUrl} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-accent hover:text-accent-light transition-colors"
+                className="text-white flex items-center gap-2 hover:text-highlight-light transition-colors"
               >
-                <MessageSquare className="w-6 h-6" />
+                <MessageSquare className="w-5 h-5" />
+                <span className="hidden md:inline">WhatsApp</span>
               </a>
               <ContactPopup 
                 content="sales@find4staff.online" 
                 url="mailto:sales@find4staff.online" 
-                icon={<Mail className="w-6 h-6" />}
+                icon={<Mail className="w-5 h-5" />}
+                label="Email"
               />
             </div>
           </div>

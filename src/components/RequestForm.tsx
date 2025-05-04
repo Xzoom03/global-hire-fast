@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -118,8 +119,8 @@ const RequestForm = () => {
       
       console.log("Submitting form data to n8n webhook:", formData);
       
-      // Submit to n8n webhook with updated URL
-      const response = await fetch("https://fizzwasay.app.n8n.cloud/webhook-test/clientform", {
+      // Submit to updated n8n webhook URL
+      const response = await fetch("https://wasayfizz.app.n8n.cloud/webhook/find4staff", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -164,7 +165,7 @@ const RequestForm = () => {
   };
 
   return (
-    <section id="request-form" className="py-16 md:py-24 bg-gradient-to-b from-white to-highlight/30">
+    <section id="request-form" className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-highlight/30">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
@@ -174,7 +175,7 @@ const RequestForm = () => {
             </p>
           </div>
           
-          <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 border border-gray-100">
+          <div className="bg-gradient-to-br from-primary/5 to-highlight/40 rounded-lg shadow-lg p-6 md:p-8 border border-highlight">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -183,9 +184,9 @@ const RequestForm = () => {
                     name="company"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Company Name</FormLabel>
+                        <FormLabel className="text-primary-dark font-medium">Company Name</FormLabel>
                         <FormControl>
-                          <Input {...field} />
+                          <Input {...field} className="bg-white/70 border-highlight focus:border-primary focus:ring-primary" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -197,9 +198,9 @@ const RequestForm = () => {
                     name="contact"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Contact Person's Full Name</FormLabel>
+                        <FormLabel className="text-primary-dark font-medium">Contact Person's Full Name</FormLabel>
                         <FormControl>
-                          <Input {...field} />
+                          <Input {...field} className="bg-white/70 border-highlight focus:border-primary focus:ring-primary" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -213,9 +214,9 @@ const RequestForm = () => {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email Address (optional if phone provided)</FormLabel>
+                        <FormLabel className="text-primary-dark font-medium">Email Address (optional if phone provided)</FormLabel>
                         <FormControl>
-                          <Input {...field} type="email" />
+                          <Input {...field} type="email" className="bg-white/70 border-highlight focus:border-primary focus:ring-primary" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -227,9 +228,9 @@ const RequestForm = () => {
                     name="phone"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Phone Number with Country Code (optional if email provided)</FormLabel>
+                        <FormLabel className="text-primary-dark font-medium">Phone Number with Country Code (optional if email provided)</FormLabel>
                         <FormControl>
-                          <Input {...field} type="tel" placeholder="e.g. +1 555 123 4567" />
+                          <Input {...field} type="tel" placeholder="e.g. +1 555 123 4567" className="bg-white/70 border-highlight focus:border-primary focus:ring-primary" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -243,13 +244,13 @@ const RequestForm = () => {
                     name="country"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Country</FormLabel>
+                        <FormLabel className="text-primary-dark font-medium">Country</FormLabel>
                         <Select 
                           onValueChange={field.onChange} 
                           value={field.value}
                         >
                           <FormControl>
-                            <SelectTrigger>
+                            <SelectTrigger className="bg-white/70 border-highlight focus:border-primary focus:ring-primary">
                               <SelectValue placeholder="Select country" />
                             </SelectTrigger>
                           </FormControl>
@@ -271,13 +272,13 @@ const RequestForm = () => {
                     name="industry"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Industry/Business Type</FormLabel>
+                        <FormLabel className="text-primary-dark font-medium">Industry/Business Type</FormLabel>
                         <Select 
                           onValueChange={(value) => handleIndustryChange(value)} 
                           value={field.value}
                         >
                           <FormControl>
-                            <SelectTrigger>
+                            <SelectTrigger className="bg-white/70 border-highlight focus:border-primary focus:ring-primary">
                               <SelectValue placeholder="Select industry" />
                             </SelectTrigger>
                           </FormControl>
@@ -301,9 +302,9 @@ const RequestForm = () => {
                     name="otherIndustry"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Specify Your Industry</FormLabel>
+                        <FormLabel className="text-primary-dark font-medium">Specify Your Industry</FormLabel>
                         <FormControl>
-                          <Input {...field} placeholder="Enter your industry" />
+                          <Input {...field} placeholder="Enter your industry" className="bg-white/70 border-highlight focus:border-primary focus:ring-primary" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -317,9 +318,9 @@ const RequestForm = () => {
                     name="positions"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Number of Positions to Fill</FormLabel>
+                        <FormLabel className="text-primary-dark font-medium">Number of Positions to Fill</FormLabel>
                         <FormControl>
-                          <Input {...field} type="number" min="1" />
+                          <Input {...field} type="number" min="1" className="bg-white/70 border-highlight focus:border-primary focus:ring-primary" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -331,9 +332,9 @@ const RequestForm = () => {
                     name="roles"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Job Titles or Roles Needed</FormLabel>
+                        <FormLabel className="text-primary-dark font-medium">Job Titles or Roles Needed</FormLabel>
                         <FormControl>
-                          <Input {...field} />
+                          <Input {...field} className="bg-white/70 border-highlight focus:border-primary focus:ring-primary" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -346,13 +347,13 @@ const RequestForm = () => {
                   name="timeline"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Preferred Hiring Timeline</FormLabel>
+                      <FormLabel className="text-primary-dark font-medium">Preferred Hiring Timeline</FormLabel>
                       <Select 
                         onValueChange={field.onChange} 
                         value={field.value}
                       >
                         <FormControl>
-                          <SelectTrigger>
+                          <SelectTrigger className="bg-white/70 border-highlight focus:border-primary focus:ring-primary">
                             <SelectValue placeholder="Select timeline" />
                           </SelectTrigger>
                         </FormControl>
@@ -374,9 +375,9 @@ const RequestForm = () => {
                   name="notes"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Additional Notes</FormLabel>
+                      <FormLabel className="text-primary-dark font-medium">Additional Notes</FormLabel>
                       <FormControl>
-                        <Textarea {...field} rows={4} />
+                        <Textarea {...field} rows={4} className="bg-white/70 border-highlight focus:border-primary focus:ring-primary" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
