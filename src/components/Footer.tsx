@@ -1,10 +1,11 @@
-
 import { Instagram, MessageSquare, Mail } from "lucide-react";
 import ContactPopup from "./EmailPopup";
-
 const Footer = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   // WhatsApp URL with the provided phone number
@@ -12,9 +13,7 @@ const Footer = () => {
 
   // Instagram URL
   const instagramUrl = "https://www.instagram.com/find4staff?igsh=OXVwMThjeHBmOGtu";
-
-  return (
-    <footer className="footer-gradient text-white py-12">
+  return <footer className="footer-gradient text-white py-12">
       <div className="container mx-auto px-4 md:px-6">
         {/* Center all footer content */}
         <div className="flex flex-col items-center justify-center text-center">
@@ -26,32 +25,17 @@ const Footer = () => {
           
           {/* Social media section - Updated design with blue background */}
           <div className="flex flex-col justify-center items-center mb-8" id="find-us-section">
-            <div className="bg-primary rounded-md px-6 py-3 flex items-center justify-center gap-6 md:gap-8">
+            <div className="rounded-md px-6 py-3 flex items-center justify-center gap-6 md:gap-8 bg-sky-950">
               <p className="text-lg font-medium text-white">Find Us Here:</p>
-              <a 
-                href={instagramUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-white flex items-center gap-2 hover:text-highlight-light transition-colors"
-              >
+              <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="text-white flex items-center gap-2 hover:text-highlight-light transition-colors">
                 <Instagram className="w-5 h-5" />
                 <span className="hidden md:inline">Instagram</span>
               </a>
-              <a 
-                href={whatsappUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-white flex items-center gap-2 hover:text-highlight-light transition-colors"
-              >
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-white flex items-center gap-2 hover:text-highlight-light transition-colors">
                 <MessageSquare className="w-5 h-5" />
                 <span className="hidden md:inline">WhatsApp</span>
               </a>
-              <ContactPopup 
-                content="sales@find4staff.online" 
-                url="mailto:sales@find4staff.online" 
-                icon={<Mail className="w-5 h-5" />}
-                label="Email"
-              />
+              <ContactPopup content="sales@find4staff.online" url="mailto:sales@find4staff.online" icon={<Mail className="w-5 h-5" />} label="Email" />
             </div>
           </div>
           
@@ -82,18 +66,13 @@ const Footer = () => {
               <a href="#" className="text-gray-300 hover:text-accent transition-colors text-sm">
                 Terms of Service
               </a>
-              <button 
-                onClick={scrollToTop}
-                className="text-gray-300 hover:text-accent transition-colors text-sm"
-              >
+              <button onClick={scrollToTop} className="text-gray-300 hover:text-accent transition-colors text-sm">
                 Back to Top
               </button>
             </div>
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
