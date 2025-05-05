@@ -26,16 +26,16 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: '#004E89',
+					DEFAULT: '#003761', // Darker blue
 					foreground: '#ffffff',
-					light: '#3A7CA5',
-					dark: '#003966',
+					light: '#0A4F80', // Medium blue
+					dark: '#00253F', // Very dark blue
 				},
 				secondary: {
-					DEFAULT: '#00BFFF',
+					DEFAULT: '#0077BE', // Bright blue
 					foreground: '#ffffff',
-					light: '#33CCFF',
-					dark: '#0099CC',
+					light: '#0098E3', // Light bright blue
+					dark: '#00599C', // Dark bright blue
 				},
 				accent: {
 					DEFAULT: '#F2A900',
@@ -128,13 +128,13 @@ export default {
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-subtle': 'linear-gradient(to right bottom, #f8fafc, #f1f5f9)',
-				'gradient-blue': 'linear-gradient(135deg, #E3F6FF 0%, #C7E6F5 100%)',
+				'gradient-blue': 'linear-gradient(135deg, #003761 0%, #0A4F80 100%)',
 				'gradient-accent': 'linear-gradient(135deg, #F2A900 0%, #FFB824 100%)',
-				'gradient-primary': 'linear-gradient(135deg, #004E89 0%, #3A7CA5 100%)'
+				'gradient-primary': 'linear-gradient(135deg, #00253F 0%, #003761 100%)'
 			},
 			boxShadow: {
-				'soft': '0 4px 20px rgba(0, 0, 0, 0.05)',
-				'glow': '0 0 15px rgba(0, 191, 255, 0.5)'
+				'soft': '0 4px 20px rgba(0, 0, 0, 0.15)',
+				'glow': '0 0 15px rgba(0, 119, 190, 0.5)'
 			}
 		}
 	},
