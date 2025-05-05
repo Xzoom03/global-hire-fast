@@ -25,7 +25,7 @@ const Footer = () => {
           
           {/* Social media section - Updated design with blue background and hover effects */}
           <div className="flex flex-col justify-center items-center mb-6" id="find-us-section">
-            <div className="rounded-md px-6 py-3 flex items-center justify-center gap-6 md:gap-8 bg-sky-600">
+            <div className="rounded-md px-6 py-3 flex items-center justify-center gap-6 md:gap-8 bg-transparent">
               <p className="text-lg font-medium text-white">Find Us Here:</p>
               <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="text-white flex items-center gap-2 hover:text-white hover:scale-110 transition-all duration-300">
                 <Instagram className="w-5 h-5" />
