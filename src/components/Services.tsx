@@ -1,6 +1,7 @@
 
 import { Globe, Users, Clock, ShieldCheck, FileCheck, UserPlus, FileText, Home } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 const servicesData = [
   {
@@ -55,23 +56,31 @@ const servicesData = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-16 md:py-24 section-gradient">
+    <section id="services" className="py-16 md:py-24 bg-gradient-to-b from-white via-highlight-light/50 to-white relative">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-r from-primary/10 via-secondary/20 to-accent/10"></div>
+      
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
+          <span className="inline-block px-4 py-1 bg-secondary-light/20 text-primary rounded-full text-sm font-medium mb-3">Our Expertise</span>
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Our Services</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
             Comprehensive recruitment solutions tailored to your business needs
           </p>
+          <div className="flex justify-center">
+            <Separator className="w-24 h-1 bg-accent" />
+          </div>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {servicesData.map((service, index) => (
             <Card 
               key={index} 
-              className="border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 bg-gradient-to-br from-white to-highlight/20 hover:to-highlight/30"
+              className="border border-gray-100 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group"
             >
-              <CardHeader>
-                <div className={`w-12 h-12 ${service.color} rounded-full flex items-center justify-center mb-4`}>
+              <div className="h-1 w-full bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
+              <CardHeader className="relative">
+                <div className={`w-12 h-12 ${service.color} rounded-full flex items-center justify-center mb-4 transition-transform group-hover:scale-110`}>
                   <service.icon className="w-6 h-6" />
                 </div>
                 <CardTitle className="text-xl font-semibold text-primary">{service.title}</CardTitle>
@@ -83,6 +92,9 @@ const Services = () => {
           ))}
         </div>
       </div>
+      
+      {/* Bottom decorative element */}
+      <div className="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-r from-accent/10 via-secondary/20 to-primary/10"></div>
     </section>
   );
 };
