@@ -18,9 +18,9 @@ const Contact = () => {
                 </h1>
               </Link>
               <div className="bg-gradient-to-br from-white/90 to-highlight/60 shadow-lg rounded-xl p-8 backdrop-blur-sm border border-highlight-light">
-                <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Contact Us</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Get in Touch</h2>
                 <p className="text-xl text-gray-700 mb-6">
-                  We'd love to hear from you! Whether you have questions, feedback, or need assistance, our team is here to help.
+                  Fill out the form below to tell us about your staffing needs and we'll find the perfect match for your business.
                 </p>
               </div>
             </div>
