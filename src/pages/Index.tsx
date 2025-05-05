@@ -12,6 +12,10 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
+        
+        {/* Improved visual separator between Hero and Services */}
+        <div className="h-2 bg-gradient-to-r from-accent/80 via-secondary to-primary-light"></div>
+        
         <Services />
         
         {/* Visual separator between Services and About */}
