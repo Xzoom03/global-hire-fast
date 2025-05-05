@@ -30,13 +30,13 @@ const Header = () => {
   return (
     <header className={`py-4 sticky top-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-primary-dark/95 backdrop-blur-md shadow-lg' 
-        : 'bg-primary-dark shadow-md'
+        ? 'bg-white/90 backdrop-blur-md shadow-md' 
+        : 'bg-white shadow-sm'
     }`}>
       <div className="container mx-auto flex justify-between items-center px-4 md:px-6">
         <div className="flex items-center">
           <Link to="/">
-            <h1 className="text-[#0EA5E9] text-2xl md:text-2xl font-bold hover:scale-105 transition-transform">Find<span className="text-[#0EA5E9]">4</span>Staff</h1>
+            <h1 className="bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent text-xl font-bold hover:scale-105 transition-transform">Find<span className="text-accent">4</span>Staff</h1>
           </Link>
         </div>
         
@@ -44,7 +44,7 @@ const Header = () => {
           <Button 
             onClick={scrollToFooter} 
             variant="outline" 
-            className="flex items-center gap-2 border-highlight hover:border-secondary hover:bg-secondary-light/20 transition-all duration-300 text-white bg-primary-light/30"
+            className="flex items-center gap-2 border-highlight hover:border-secondary hover:bg-secondary-light/20 transition-all duration-300"
           >
             FIND US
           </Button>
@@ -52,7 +52,7 @@ const Header = () => {
           <Link to="/contact" className="transition-all duration-300 hover:scale-105">
             <Button 
               variant="outline" 
-              className="flex items-center gap-2 bg-gradient-to-r from-accent to-accent-light hover:from-accent-light hover:to-accent text-primary-dark"
+              className="flex items-center gap-2 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-light hover:to-primary text-white"
             >
               <MessageCircle className="w-4 h-4" /> 
               CONTACT US
