@@ -36,7 +36,7 @@ const Header = () => {
       <div className="container mx-auto flex justify-between items-center px-4 md:px-6">
         <div className="flex items-center">
           <Link to="/">
-            <h1 className="text-white text-2xl md:text-3xl font-bold hover:scale-105 transition-transform">Find<span className="text-accent">4</span>Staff</h1>
+            <h1 className="text-[#0EA5E9] text-2xl md:text-2xl font-bold hover:scale-105 transition-transform">Find<span className="text-[#0EA5E9]">4</span>Staff</h1>
           </Link>
         </div>
         
