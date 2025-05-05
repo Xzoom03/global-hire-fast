@@ -1,9 +1,10 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -32,13 +33,14 @@ const formSchema = z.object({
   timeline: z.string().min(1, "Timeline is required"),
   message: z.string().optional()
 });
+
 type FormValues = z.infer<typeof formSchema>;
+
 const RequestForm = () => {
-  const {
-    toast
-  } = useToast();
+  const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showOtherIndustry, setShowOtherIndustry] = useState(false);
+  
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -55,6 +57,7 @@ const RequestForm = () => {
       message: ""
     }
   });
+
   const handleSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     try {
@@ -74,7 +77,9 @@ const RequestForm = () => {
         },
         body: JSON.stringify(formData)
       });
+      
       console.log("Form submission response:", response.status);
+      
       if (!response.ok) {
         const errorText = await response.text();
         console.error("Form submission error:", response.status, errorText);
@@ -107,7 +112,9 @@ const RequestForm = () => {
     form.setValue("industry", value);
     setShowOtherIndustry(value === "Other");
   };
-  return <section id="request-form" className="py-16 md:py-20 bg-gradient-to-b from-primary/10 to-highlight/20">
+
+  return (
+    <section id="request-form" className="py-16 md:py-20 bg-gradient-to-b from-primary/10 to-highlight/20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
@@ -125,52 +132,70 @@ const RequestForm = () => {
                   <h3 className="text-xl font-semibold text-primary border-b border-highlight/30 pb-2 mb-4">Contact Information</h3>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField control={form.control} name="name" render={({
-                    field
-                  }) => <FormItem>
+                    <FormField 
+                      control={form.control} 
+                      name="name" 
+                      render={({ field }) => (
+                        <FormItem>
                           <FormLabel className="text-primary-dark font-medium">Full Name</FormLabel>
                           <FormControl>
                             <Input {...field} className="bg-white/80 border-highlight/50 focus-visible:ring-primary" />
                           </FormControl>
                           <FormMessage />
-                        </FormItem>} />
+                        </FormItem>
+                      )} 
+                    />
                     
-                    <FormField control={form.control} name="email" render={({
-                    field
-                  }) => <FormItem>
+                    <FormField 
+                      control={form.control} 
+                      name="email" 
+                      render={({ field }) => (
+                        <FormItem>
                           <FormLabel className="text-primary-dark font-medium">Email Address</FormLabel>
                           <FormControl>
                             <Input type="email" {...field} className="bg-white/80 border-highlight/50 focus-visible:ring-primary" />
                           </FormControl>
                           <FormMessage />
-                        </FormItem>} />
+                        </FormItem>
+                      )} 
+                    />
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField control={form.control} name="company" render={({
-                    field
-                  }) => <FormItem>
+                    <FormField 
+                      control={form.control} 
+                      name="company" 
+                      render={({ field }) => (
+                        <FormItem>
                           <FormLabel className="text-primary-dark font-medium">Company Name</FormLabel>
                           <FormControl>
                             <Input {...field} className="bg-white/80 border-highlight/50 focus-visible:ring-primary" />
                           </FormControl>
                           <FormMessage />
-                        </FormItem>} />
+                        </FormItem>
+                      )} 
+                    />
                     
-                    <FormField control={form.control} name="phone" render={({
-                    field
-                  }) => <FormItem>
+                    <FormField 
+                      control={form.control} 
+                      name="phone" 
+                      render={({ field }) => (
+                        <FormItem>
                           <FormLabel className="text-primary-dark font-medium">Phone Number</FormLabel>
                           <FormControl>
                             <Input type="tel" {...field} placeholder="e.g. +1 555 123 4567" className="bg-white/80 border-highlight/50 focus-visible:ring-primary" />
                           </FormControl>
                           <FormMessage />
-                        </FormItem>} />
+                        </FormItem>
+                      )} 
+                    />
                   </div>
                   
-                  <FormField control={form.control} name="country" render={({
-                  field
-                }) => <FormItem>
+                  <FormField 
+                    control={form.control} 
+                    name="country" 
+                    render={({ field }) => (
+                      <FormItem>
                         <FormLabel className="text-primary-dark font-medium">Country</FormLabel>
                         <Select onValueChange={field.onChange} value={field.value}>
                           <FormControl>
@@ -179,20 +204,26 @@ const RequestForm = () => {
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent className="max-h-80">
-                            {countries.map(country => <SelectItem key={country} value={country}>{country}</SelectItem>)}
+                            {countries.map(country => (
+                              <SelectItem key={country} value={country}>{country}</SelectItem>
+                            ))}
                           </SelectContent>
                         </Select>
                         <FormMessage />
-                      </FormItem>} />
+                      </FormItem>
+                    )} 
+                  />
                 </div>
                 
                 {/* Staffing Requirements */}
                 <div className="space-y-4">
                   <h3 className="text-xl font-semibold text-primary border-b border-highlight/30 pb-2 mb-4">Staffing Requirements</h3>
                   
-                  <FormField control={form.control} name="industry" render={({
-                  field
-                }) => <FormItem>
+                  <FormField 
+                    control={form.control} 
+                    name="industry" 
+                    render={({ field }) => (
+                      <FormItem>
                         <FormLabel className="text-primary-dark font-medium">Industry</FormLabel>
                         <Select onValueChange={value => handleIndustryChange(value)} value={field.value}>
                           <FormControl>
@@ -201,36 +232,52 @@ const RequestForm = () => {
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            {industries.map(industry => <SelectItem key={industry} value={industry}>{industry}</SelectItem>)}
+                            {industries.map(industry => (
+                              <SelectItem key={industry} value={industry}>{industry}</SelectItem>
+                            ))}
                           </SelectContent>
                         </Select>
                         <FormMessage />
-                      </FormItem>} />
+                      </FormItem>
+                    )} 
+                  />
                   
-                  {showOtherIndustry && <FormField control={form.control} name="otherIndustry" render={({
-                  field
-                }) => <FormItem>
+                  {showOtherIndustry && (
+                    <FormField 
+                      control={form.control} 
+                      name="otherIndustry" 
+                      render={({ field }) => (
+                        <FormItem>
                           <FormLabel className="text-primary-dark font-medium">Please Specify Your Industry</FormLabel>
                           <FormControl>
                             <Input {...field} placeholder="Enter your industry" className="bg-white/80 border-highlight/50 focus-visible:ring-primary" />
                           </FormControl>
                           <FormMessage />
-                        </FormItem>} />}
+                        </FormItem>
+                      )} 
+                    />
+                  )}
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField control={form.control} name="positions" render={({
-                    field
-                  }) => <FormItem>
+                    <FormField 
+                      control={form.control} 
+                      name="positions" 
+                      render={({ field }) => (
+                        <FormItem>
                           <FormLabel className="text-primary-dark font-medium">Number of Positions</FormLabel>
                           <FormControl>
                             <Input {...field} type="number" min="1" className="bg-white/80 border-highlight/50 focus-visible:ring-primary" />
                           </FormControl>
                           <FormMessage />
-                        </FormItem>} />
+                        </FormItem>
+                      )} 
+                    />
                     
-                    <FormField control={form.control} name="timeline" render={({
-                    field
-                  }) => <FormItem>
+                    <FormField 
+                      control={form.control} 
+                      name="timeline" 
+                      render={({ field }) => (
+                        <FormItem>
                           <FormLabel className="text-primary-dark font-medium">Hiring Timeline</FormLabel>
                           <Select onValueChange={field.onChange} value={field.value}>
                             <FormControl>
@@ -239,32 +286,44 @@ const RequestForm = () => {
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              {timelines.map(timeline => <SelectItem key={timeline} value={timeline}>{timeline}</SelectItem>)}
+                              {timelines.map(timeline => (
+                                <SelectItem key={timeline} value={timeline}>{timeline}</SelectItem>
+                              ))}
                             </SelectContent>
                           </Select>
                           <FormMessage />
-                        </FormItem>} />
+                        </FormItem>
+                      )} 
+                    />
                   </div>
                   
-                  <FormField control={form.control} name="jobRoles" render={({
-                  field
-                }) => <FormItem>
+                  <FormField 
+                    control={form.control} 
+                    name="jobRoles" 
+                    render={({ field }) => (
+                      <FormItem>
                         <FormLabel className="text-primary-dark font-medium">Job Roles Needed</FormLabel>
                         <FormControl>
                           <Input {...field} placeholder="e.g. Software Developer, Project Manager" className="bg-white/80 border-highlight/50 focus-visible:ring-primary" />
                         </FormControl>
                         <FormMessage />
-                      </FormItem>} />
+                      </FormItem>
+                    )} 
+                  />
                   
-                  <FormField control={form.control} name="message" render={({
-                  field
-                }) => <FormItem>
+                  <FormField 
+                    control={form.control} 
+                    name="message" 
+                    render={({ field }) => (
+                      <FormItem>
                         <FormLabel className="text-primary-dark font-medium">Additional Requirements</FormLabel>
                         <FormControl>
                           <Textarea {...field} placeholder="Tell us more about your requirements, skills needed, etc." className="bg-white/80 border-highlight/50 focus-visible:ring-primary" rows={4} />
                         </FormControl>
                         <FormMessage />
-                      </FormItem>} />
+                      </FormItem>
+                    )} 
+                  />
                 </div>
                 
                 <Button type="submit" className="w-full bg-secondary hover:bg-secondary/90 text-white font-medium text-lg py-6 shadow-md hover:shadow-lg transition-all" disabled={isSubmitting}>
@@ -279,6 +338,8 @@ const RequestForm = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default RequestForm;
