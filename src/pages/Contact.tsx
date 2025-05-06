@@ -9,7 +9,7 @@ const Contact = () => {
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-highlight/30 via-secondary-light/20 to-white font-sans">
       <Header />
       <main className="flex-grow">
-        <section className="py-12 md:py-16 bg-gradient-to-br from-primary/10 to-accent/10" id="contact-top">
+        <section className="py-12 md:py-16 bg-gradient-to-br from-primary/10 to-accent/10">
           <div className="container mx-auto px-4 md:px-6">
             <div className="text-center mb-10 max-w-4xl mx-auto">
               <Link to="/" className="inline-block mb-6">
