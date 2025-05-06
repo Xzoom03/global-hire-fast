@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -73,7 +72,7 @@ const RecruitmentShowcase = () => {
             <Button 
               className="mt-4 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-light hover:to-primary text-white font-medium px-8 py-6 rounded-md text-lg shadow-lg hover:shadow-xl transition-all hover:scale-105"
             >
-              Contact Us to Learn More
+              Contact Us To Learn More
             </Button>
           </Link>
         </div>
