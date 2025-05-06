@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -70,7 +69,7 @@ const RequestForm = () => {
       console.log("Submitting form data to webhook:", formData);
 
       // Send to new webhook URL
-      const response = await fetch("https://wasayfizz.app.n8n.cloud/webhook/find4staffform", {
+      const response = await fetch("https://n8n.srv817113.hstgr.cloud/webhook/find4form", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
